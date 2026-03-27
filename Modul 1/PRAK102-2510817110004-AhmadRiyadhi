@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Kendaraan {
+    string platNomor;
+    string jenisKendaraan;
+    string namaPemilik;
+    string alamat;
+    string kota;
+};
+
+int main() {
+    Kendaraan mobilKu;
+    mobilKu.platNomor = "DA1234MK";
+    mobilKu.jenisKendaraan = "RUSH";
+    mobilKu.namaPemilik = "Andika Hartanto";
+    mobilKu.alamat = "Jl. Kayu Tangi 1";
+    mobilKu.kota = "Banjarmasin";
+
+    cout << "a. Plat Nomor Kendaraan : " << mobilKu.platNomor << endl;
+    cout << "b. Jenis Kendaraan      : " << mobilKu.jenisKendaraan << endl;
+    cout << "c. Nama Pemilik         : " << mobilKu.namaPemilik << endl;
+    cout << "d. Alamat                : " << mobilKu.alamat << endl;
+    cout << "e. Kota                : " << mobilKu.kota << endl;
+
+    return 0;
+}
