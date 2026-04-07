@@ -1,0 +1,100 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+#define n 10
+
+int F = -1, R = -1;
+char Q[n];
+int PIL;
+
+bool kosong() {
+    return (F == -1);
+}
+
+bool penuh() {
+    return (R == n - 1);
+}
+
+void Inisialisasi() {
+    F = R = -1;
+}
+
+void INSERT() {
+    if (penuh()) {
+        cout << "Queue Penuh!\n";
+    } else {
+        char data;
+        cout << "Masukkan data: ";
+        cin >> data;
+        if (kosong()) {
+            F = R = 0;
+        } else {
+            R++;
+        }
+        Q[R] = data;
+        cout << "Data masuk ke queue\n";
+    }
+}
+
+void DELETE() {
+    if (kosong()) {
+        cout << "Queue Kosong!\n";
+    } else {
+        cout << "Data keluar: " << Q[F] << endl;
+        if (F == R) {
+            F = R = -1;
+        } else {
+            F++;
+        }
+    }
+}
+
+void CETAKLAYAR() {
+    if (kosong()) {
+        cout << "Queue kosong\n";
+    } else {
+        cout << "Isi Queue: ";
+        for (int i = F; i <= R; i++) {
+            cout << Q[i] << " ";
+        }
+        cout << endl;
+    }
+}
+
+void RESET() {
+    F = R = -1;
+    cout << "Queue dikosongkan\n";
+}
+
+int main() {
+    Inisialisasi();
+    do {
+        cout << "\nQUEUE\n";
+        cout << "==============\n";
+        cout << "1. INSERT\n";
+        cout << "2. DELETE\n";
+        cout << "3. CETAK QUEUE\n";
+        cout << "4. QUIT\n";
+        cout << "PILIHAN : ";
+        cin >> PIL;
+        
+        switch (PIL) {
+            case 1:
+                INSERT();
+                break;
+            case 2:
+                DELETE();
+                break;
+            case 3:
+                CETAKLAYAR();
+                break;
+            case 4:
+                cout << "TERIMA KASIH\n";
+                break;
+            default:
+                cout << "Pilihan tidak valid\n";
+        }
+    } while (PIL != 4);
+    
+    return 0;
+}
