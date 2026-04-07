@@ -1,1 +1,1 @@
-# Praktikum-Algoritma-P1-Modul1
+# Praktikum-AlgoritmaDanStrukturData-P1
