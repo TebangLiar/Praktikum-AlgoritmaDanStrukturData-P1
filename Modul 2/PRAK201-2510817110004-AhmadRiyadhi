@@ -1,0 +1,104 @@
+#include <iostream>
+using namespace std;
+#define max 5
+
+// Struktur Stack
+struct Stack {
+    int data[max];
+    int atas;
+};
+
+Stack Tumpuk;
+
+// Fungsi cek kosong
+int kosong() {
+    if (Tumpuk.atas == -1)
+        return 1;
+    else
+        return 0;
+}
+
+// Fungsi cek penuh
+int penuh() {
+    if (Tumpuk.atas == max - 1)
+        return 1;
+    else
+        return 0;
+}
+
+// Fungsi input (push)
+void input(int data) {
+    if (kosong() == 1) {
+        Tumpuk.atas++;
+        Tumpuk.data[Tumpuk.atas] = data;
+        cout << "Data " << Tumpuk.data[Tumpuk.atas] << " Masuk Ke Stack\n";
+    } else if (penuh() == 0) {
+        Tumpuk.atas++;
+        Tumpuk.data[Tumpuk.atas] = data;
+        cout << "Data " << Tumpuk.data[Tumpuk.atas] << " Masuk Ke Stack\n";
+    } else {
+        cout << "Tumpukan Penuh\n";
+    }
+}
+
+// Fungsi hapus (pop)
+void hapus() {
+    if (kosong() == 0) {
+        cout << "Data Teratas Sudah Terambil\n";
+        Tumpuk.atas--;
+    } else {
+        cout << "Data Kosong\n";
+    }
+}
+
+// Fungsi tampil
+void tampil() {
+    if (kosong() == 0) {
+        for (int i = Tumpuk.atas; i >= 0; i--) {
+            cout << "Tumpukan Ke " << i << " = " << Tumpuk.data[i] << endl;
+        }
+    } else {
+        cout << "Tumpukan Kosong\n";
+    }
+}
+
+// Fungsi bersih
+void bersih() {
+    Tumpuk.atas = -1;
+    cout << "Tumpukan Kosong!\n";
+}
+
+// Program utama
+int main() {
+    Tumpuk.atas = -1; // inisialisasi stack
+    int pilihan, data;
+    do {
+        cout << "\n=== MENU STACK ===\n";
+        cout << "1. Input (Push)\n";
+        cout << "2. Hapus (Pop)\n";
+        cout << "3. Tampil\n";
+        cout << "4. Bersih\n";
+        cout << "5. Keluar\n";
+        cout << "Pilih: ";
+        cin >> pilihan;
+
+        switch (pilihan) {
+            case 1:
+                cout << "Masukkan data: ";
+                cin >> data;
+                input(data);
+                break;
+            case 2:
+                hapus();
+                break;
+            case 3:
+                tampil();
+                break;
+            case 4:
+                bersih();
+                break;
+        }
+    } while (pilihan != 5);
+
+    return 0;
+}
